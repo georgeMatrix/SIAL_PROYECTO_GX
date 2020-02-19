@@ -1,0 +1,2 @@
+<a class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#clientesModal" onclick="detalleCliente({{$id}});"><i class="fas fa-list"></i></a>
+<a href="{{ route('clientes.edit', $id) }}" class="btn btn-primary btn-sm" ><i class="far fa-edit"></i></a>
