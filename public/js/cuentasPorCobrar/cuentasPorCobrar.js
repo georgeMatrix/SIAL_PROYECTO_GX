@@ -12,7 +12,7 @@ $('#formCuentasPorPagar').submit(function(e){
         ];
     let tokenCuentasPorPagar = $('#tokenCuentasPorPagar').val();
     ajax(request, tokenCuentasPorPagar)
-});
+});     ////listo
 
 function ajax(request, tokenCuentasPorPagar){
     $.ajax({
@@ -61,11 +61,11 @@ function ajax(request, tokenCuentasPorPagar){
         .fail(function() {
             console.log("error");
         });
-}
+}       ////listo
 
 $("#cuentasPorCobrarForm").submit(function(){
     $("#cuentasPorCobrarForm").serialize();
-});
+});     ////listo
 
 function number_format(amount, decimals) {
 
@@ -88,7 +88,7 @@ function number_format(amount, decimals) {
         amount_parts[0] = amount_parts[0].replace(regexp, '$1' + ',' + '$2');
 
     return amount_parts.join('.');
-}
+}           ////listo
 
 function inputCheckFacturar(){
     var contador=0;
@@ -115,14 +115,14 @@ function inputCheckFacturar(){
         contentType: 'application/json',
         data: JSON.stringify(request),
     }).done(function(response) {})
-}
+}       ////listo
 
 $(document).ready(function(){
     $("#XMLFactura").prop("href", localStorage.getItem("direccionXML"));
     var screen = $('#loading-screen');
     configureLoadingScreen(screen);
     modal();
-})
+})      ////falta pasar al nuevo
 
 function inputChecked(i) {
     for (let j = 0; j <= i ; j++) {
@@ -135,13 +135,13 @@ function inputChecked(i) {
             $("#preV").prop("disabled", true)
         }
     }
-}
+    }       ////falta pasar al nuevo
 
 function modal(){
     $("#formModalFactura").submit(function (e) {
         return false;
     })
-}
+}               ////falta pasar al nuevo
 
 function configureLoadingScreen(screen){
     $(document)
@@ -151,7 +151,7 @@ function configureLoadingScreen(screen){
         .ajaxStop(function () {
             screen.fadeOut();
         });
-}
+}       ////falta pasar al nuevo
 
 function generarPrevisualizacionFactura(){
     let noConceptos
@@ -254,7 +254,7 @@ function generarPrevisualizacionFactura(){
         //$("#cartaPortePre").text("hola")
         organizacionModalPrevisualizacion(datosParaServidor)
     })
-}
+}       ///aqui voy
 
 function organizacionModalPrevisualizacion(datosParaServidor){
     console.log(datosParaServidor)

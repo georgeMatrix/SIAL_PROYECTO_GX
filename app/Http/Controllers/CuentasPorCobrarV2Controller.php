@@ -15,7 +15,9 @@ use App\Nacional;
 use App\Provedores;
 use App\Rutas;
 use App\Unidades;
+use Illuminate\Support\Facades\DB;
 use PHPExcel_Worksheet_Drawing;
+use Yajra\DataTables\Facades\DataTables;
 use function Couchbase\defaultDecoder;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -23,6 +25,46 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CuentasPorCobrarV2Controller extends Controller
 {
+    public function getCuentasPorCobrar(Request $request){
+        //return $request;
+
+        $facturables = DB::table('facturables');
+        return Datatables::of($facturables)
+            ->filter(function ($query) use ($request) {
+
+                if ($request->has('facturador') && request('facturador')) {
+                    $query->where('facturables.emisor_razon_social', '=', $request->get('facturador'));
+                }if ($request->has('cliente') && request('cliente')) {
+                    $query->where('facturables.cliente_id', '=', $request->get('cliente'));
+                }
+            })
+            ->editColumn('created_at', function($row) {
+                $contador = 0;
+                    if ($row->USER_CARTA_PORTE_TIPO_ID == "N"){
+                        $nacional = Nacional::where("cartaPorte", $row->USER_CARTA_PORTE_TIPO)->select("id")->first();
+                        $tipo[$contador] = $nacional->id;
+
+                    }
+                    elseif ($row->USER_CARTA_PORTE_TIPO_ID == "I") {
+                        $importacion = Importacion::where("cartaPorte", $row->USER_CARTA_PORTE_TIPO)->select("id")->first();
+                        $tipo[$contador] = $importacion->id;
+                    }
+
+                    elseif ($row->USER_CARTA_PORTE_TIPO_ID == "E") {
+                        $exportacion = Exportacion::where("cartaPorte", "=", $row->USER_CARTA_PORTE_TIPO)->select("id")->first();
+                        $tipo[$contador] = $exportacion->id;
+                    }
+
+                    elseif ($row->USER_CARTA_PORTE_TIPO_ID == "C") {
+                        $cruce = Cruce::where("cartaPorte", "=", $row->USER_CARTA_PORTE_TIPO)->select("id")->first();
+                        $tipo[$contador] = $cruce->id;
+
+                    }
+                return $tipo;
+            })
+            ->make(true);
+    }
+
     public function excel(Request $request){
         $facturables = Facturables::where('factura', '=', $request['idFactura'])->get();
         $facturablesFirst = Facturables::where('factura', '=', $request['idFactura'])->first();

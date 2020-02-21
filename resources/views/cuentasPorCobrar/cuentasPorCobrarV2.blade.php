@@ -47,42 +47,43 @@
                 </div>
             </form>
         </div>
-        <div class="row">
+        <div class="row mt-4">
             <div class="col-md-12">
                 <div class="table-responsive content-loader">
-                    <table class="table table-hover table-sm table-striped">
-                        <thead>
-                            <tr>
-                                <th>SELECT</th>
-                                <th>TIPO</th>
-                                <th>CARTA_PORTE</th>
-                                <th>FACTURADOR</th>
-                                <th>CLIENTE</th>
-                                <th>NOMBRE_RUTA</th>
-                                <th>UNIDAD</th>
-                                <th>REMOLQUE</th>
-                                <th>OPERADOR</th>
-                                <th>CLAVE_PRODUCTO_O_SERVICIO</th>
-                                <th>NO._IDENTIFICACION</th>
-                                <th>CANTIDAD</th>
-                                <th>CLAVE_UNIDAD</th>
-                                <th>UNIDAD</th>
-                                <th>DESCRIPCION</th>
-                                <th>VALOR_UNITARIO</th>
-                                <th>IMPORTE</th>
-                                <th>IVA_TRASLADADO</th>
-                                <th>IVA_RETENIDO</th>
-                                <th>TOTAL</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablaCuentasPorPagar">
-                        </tbody>
-                        <!--<form action="{{route('cuentasPorCobrarV2.store')}}" method="post" id="cuentasPorCobrarForm">
-                            <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">
-                                <tbody id="tablaCuentasPorPagar">
-                                </tbody>
-                            <button type="submit" class="btn btn-info">Enviar</button>
-                        </form>-->
+                    <button onclick="getSelected()">Get Selected</button>
+                    <table class="table table-hover table-sm table-striped" id="cuentasPorCobrarTable">
+{{--                        <thead>--}}
+{{--                            <tr>--}}
+{{--                                <th>SELECT</th>--}}
+{{--                                <th>TIPO</th>--}}
+{{--                                <th>CARTA_PORTE</th>--}}
+{{--                                <th>FACTURADOR</th>--}}
+{{--                                <th>CLIENTE</th>--}}
+{{--                                <th>NOMBRE_RUTA</th>--}}
+{{--                                <th>UNIDAD</th>--}}
+{{--                                <th>REMOLQUE</th>--}}
+{{--                                <th>OPERADOR</th>--}}
+{{--                                <th>CLAVE_PRODUCTO_O_SERVICIO</th>--}}
+{{--                                <th>NO._IDENTIFICACION</th>--}}
+{{--                                <th>CANTIDAD</th>--}}
+{{--                                <th>CLAVE_UNIDAD</th>--}}
+{{--                                <th>UNIDAD</th>--}}
+{{--                                <th>DESCRIPCION</th>--}}
+{{--                                <th>VALOR_UNITARIO</th>--}}
+{{--                                <th>IMPORTE</th>--}}
+{{--                                <th>IVA_TRASLADADO</th>--}}
+{{--                                <th>IVA_RETENIDO</th>--}}
+{{--                                <th>TOTAL</th>--}}
+{{--                            </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody id="tablaCuentasPorPagar">--}}
+{{--                        </tbody>--}}
+{{--                        <!--<form action="{{route('cuentasPorCobrarV2.store')}}" method="post" id="cuentasPorCobrarForm">--}}
+{{--                            <input type="hidden" name="_token" value="{{csrf_token()}}" id="token">--}}
+{{--                                <tbody id="tablaCuentasPorPagar">--}}
+{{--                                </tbody>--}}
+{{--                            <button type="submit" class="btn btn-info">Enviar</button>--}}
+{{--                        </form>-->--}}
 
                     </table>
                 </div>
@@ -96,5 +97,5 @@
     @include('include.modalPrevisualizacionFactura')
 @endsection
 @section('scripts')
-    <script src="{{asset('js/cuentasPorCobrar/cuentasPorCobrar.js')}}"></script>
+    <script src="{{asset('js/cuentasPorCobrar/cuentasPorCobrarv2.js')}}"></script>
     @endsection

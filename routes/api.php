@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('getClientes', 'ClientesController@getClientes');
 Route::get('getOperadores', 'OperadoresController@getOperadores');
+Route::post('getCuentasPorCobrar', 'CuentasPorCobrarV2Controller@getCuentasPorCobrar');
 
 Route::get('/uno', 'RutasController@datosSelect');
 Route::get('/evaluacion', 'RutasController@datosCporPagar');

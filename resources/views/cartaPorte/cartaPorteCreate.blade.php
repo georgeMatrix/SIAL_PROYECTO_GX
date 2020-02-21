@@ -39,7 +39,7 @@
 
                     <div class="form-group">
                         <h5 for="">Cliente</h5>
-                            <select name="clientes" id="clientes" class="form-control" value="{{old('clientes')}}">
+                            <select required name="clientes" id="clientes" class="form-control" value="{{old('clientes')}}">
                                 <option value="">Seleccione el cliente</option>
                                 @foreach($clientes as $cliente)
                                 <option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
